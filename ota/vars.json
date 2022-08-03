@@ -1,0 +1,11 @@
+{
+    "pwd": "wellison0409", 
+    "device_id": "wellison-esp32", 
+    "sas_token_str": "SharedAccessSignature sr=SquadIoT.azure-devices.net%2Fdevices%2Fwellison-esp32&sig=t1eakUcJ0MHVNoBB4dhMmTpq38zw%2FqdpR9EkQQEbBhk%3D&se=1676927981", 
+    "ssid": "Wellison", 
+    "hostname": "SquadIoT.azure-devices.net", 
+    "username": ""
+}
+
+
+
