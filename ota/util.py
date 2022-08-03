@@ -87,8 +87,7 @@ def sensor_get_values():
   msg = {}
   msgfull = {}
   msg["Movement_Sensor"] = movement_value
-  msg['Movement_Sensor ON/OFF'] = movement_sensor.value()
-  msg["time"] = time.time()
+  msg['Movement_Sensor ON/OFF'] = movement_sensor
   msg["temperature"] = temp
   return json.dumps(msg)
 
