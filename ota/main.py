@@ -67,8 +67,6 @@ def pub_sub():
                         mqtt_client.publish(topic=topic, msg=data)
                     elif datadataset_dec_rep_j['act'] == "movement": 
                         data = movement_s()
-                        topic = get_telemetry_topic(survey_data['device_id'])
-                        mqtt_client.publish(topic=topic, msg=data)
                     else: print("")
                 except: 
                     print("erro - payload enviado: ",datadataset_dec_rep_j)
