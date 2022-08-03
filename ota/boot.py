@@ -47,7 +47,7 @@ try:
         machine.reset()
 
 except:
-    print('Sem atualizacao no momento!!!')
+    print('Sem atualizacao no momento')
     None
 
 
