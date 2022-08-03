@@ -106,13 +106,13 @@ def movement_s():
 
 
 def movement_on():
-  print("Moviment Sensor ON!!")
+  print("Movement Sensor ON!!")
   movement_sensor = Pin(4, Pin.IN)
   movement_sensor.value(1)
   return movement_sensor.value()
   
 def movement_off():
-  print("Movemento Sensor OFF!!!")
+  print("Movement Sensor OFF!!!")
   movement_sensor = Pin(4, Pin.IN)
   movement_sensor.value(0)
   return movement_sensor.value()
