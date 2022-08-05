@@ -75,7 +75,7 @@ def pub_sub():
                 utime.sleep(1)
             mqtt_client.disconnect()
     except Exception as e: 
-        print("Sub function error: ", e)
+        print("Sub function error : ", e)
         mqtt_client.disconnect()
 
 #while True:
