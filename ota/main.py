@@ -1,4 +1,5 @@
 
+
 from util import create_mqtt_client, get_telemetry_topic, get_c2d_topic, open_json, sensor_get_values, movement_s, get_telemetry_topic, movement_on, movement_off
 
 import utime
@@ -31,7 +32,7 @@ def reset_mac():
   
 def res():
   time.sleep(900)
-  print("Reiniciando recorrente.")
+  print("Reiniciando recorrente")
   machine.reset()
 
 #collect from topic
@@ -39,6 +40,7 @@ def pub_sub():
     global datadataset_dec_rep_j
     try:
         while True:
+
             print("Listening: ")
             print("123")
             mqtt_client.reconnect()
@@ -51,11 +53,8 @@ def pub_sub():
                 data = sensor_get_values()
                 topic = get_telemetry_topic(survey_data['device_id'])
                 mqtt_client.publish(topic=topic, msg=data)
-                else:
-                  print("Sem Movimento")
-                    
             except: 
-                print("erro - payload enviado: ",datadataset_dec_rep_j)
+                print("erro - payload enviado")
                     
             mqtt_client.check_msg()
             utime.sleep(1)
@@ -71,4 +70,11 @@ _thread.start_new_thread(pub_sub, ())
 _thread.start_new_thread(res, ())
 #_thread.start_new_thread(sub, ())
 #web_register_uix()
+
+
+
+
+
+
+
 
