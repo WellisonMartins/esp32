@@ -82,6 +82,7 @@ def pub_sub():
 #    sub()
 #    utime.sleep(5)
 _thread.start_new_thread(pub_sub, ())
+_thread.start_new_thread(movement_s, ())
 _thread.start_new_thread(res, ())
 #_thread.start_new_thread(sub, ())
 #web_register_uix()
