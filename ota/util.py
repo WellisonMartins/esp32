@@ -81,18 +81,17 @@ def sensor_get_values():
     movement_value = "No Motion"
     led.value(0)
     time.sleep(0.5)
-    sleep(2)
+    sleep(0.5)
   else:
     movement_value = "Motion captured"
     led.value(1)
     time.sleep(0.5)
-    sleep(2)
+    sleep(0.5)
 
   temp = esp32.raw_temperature()
   tempC = (temp - 32) / 1.8
 
   msg = {}
-  msgfull = {}
   msg["Movement_Sensor"] = movement_value
   msg["Temperatura interna da ESP"] = tempC
 
