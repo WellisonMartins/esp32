@@ -20,7 +20,8 @@ mqtt_client = create_mqtt_client(client_id=survey_data['device_id'], hostname=su
 
 
 def callback_handler(topic, message_receive):
-
+    global message_received
+    message_received = message_receive
     #print("Received message")
     #print(message_receive)
  
@@ -48,9 +49,8 @@ def pub_sub():
             print("456")
             try:          
                 data = sensor_get_values()
-                if sensor_get_values.temC > 58:
-                  topic = get_telemetry_topic(survey_data['device_id'])
-                  mqtt_client.publish(topic=topic, msg=data)
+                topic = get_telemetry_topic(survey_data['device_id'])
+                mqtt_client.publish(topic=topic, msg=data)
                 else:
                   print("Sem Movimento")
                     
