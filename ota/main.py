@@ -40,7 +40,6 @@ def pub_sub():
     global datadataset_dec_rep_j
     try:
         while True:
-
             print("Listening: ")
             print("123")
             mqtt_client.reconnect()
