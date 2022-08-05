@@ -4,7 +4,7 @@ import json
 from machine import ADC, Pin, I2C
 import machine
 import random
-from time import sleep
+from time import sleep, gmtime, strftime
 import time
 import utime
 import esp32
@@ -91,6 +91,9 @@ def sensor_get_values():
   msg["Movement_Sensor"] = movement_value
   msg["Movement_Sensor ON/OFF"] = movement_sensor.value()
   msg["Temperatura interna da ESP"] = tempC
+  print(strftime("%d/%m/%y - %H:%M:%S", gmtime()))
+
+
   return json.dumps(msg)
 
 def movement_s():
