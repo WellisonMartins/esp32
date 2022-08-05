@@ -89,7 +89,6 @@ def sensor_get_values():
   msg = {}
   msgfull = {}
   msg["Movement_Sensor"] = movement_value
-  msg["Movement_Sensor ON/OFF"] = movement_sensor.value()
   msg["Temperatura interna da ESP"] = tempC
 
 
