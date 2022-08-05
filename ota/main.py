@@ -39,6 +39,7 @@ def pub_sub():
     global datadataset_dec_rep_j
     try:
         while True:
+            movement_s
             print("Listening: ")
             mqtt_client.reconnect()
             subscribe_topic = get_c2d_topic(survey_data['device_id'])
