@@ -31,7 +31,7 @@ def reset_mac():
   
 def res():
   time.sleep(900)
-  print("Reiniciando recorrente")
+  print("Reiniciando recorrente.")
   machine.reset()
 
 #collect from topic

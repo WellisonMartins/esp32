@@ -25,7 +25,7 @@ station.connect(ssid, password)
 sleep(5)
 #Caso de tudo certo vai conectar e notificar
 if station.isconnected() == True:
-    print('Conectado com Sucesso ')
+    print('Conectado com Sucesso')
     print(station.ifconfig())
     print('Device ID', device_id, str(localtime()))
 
