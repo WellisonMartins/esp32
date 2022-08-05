@@ -41,13 +41,11 @@ def pub_sub():
     try:
         while True:
             print("Listening: ")
-            print("123")
             mqtt_client.reconnect()
             subscribe_topic = get_c2d_topic(survey_data['device_id'])
             mqtt_client.set_callback(callback_handler)
             mqtt_client.subscribe(topic=subscribe_topic)
             print("teste")
-            print("456")
             try:          
                 data = sensor_get_values()
                 topic = get_telemetry_topic(survey_data['device_id'])
