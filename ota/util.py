@@ -63,7 +63,7 @@ def open_json():
     return survey_data
 
 ##############################################
-#Projeto com Sensores
+#Projeto com Sensor de Movimento
 
 #Sensor Wellison
 movement_sensor = Pin(4, Pin.IN, Pin.PULL_UP)
@@ -75,19 +75,21 @@ def sensor_get_values():
     movement_value = "No Motion!"
     led.value(0)
     time.sleep(0.5)
-    temp = esp32.raw_temperature()
     sleep(2)
   else:
     movement_value = "Motion captured!"
     led.value(1)
     time.sleep(0.5)
-    temp = esp32.raw_temperature()
     sleep(2)
+
+  temp = esp32.raw_temperature()
+  tempC = (temp - 32) / 1.8
 
   msg = {}
   msgfull = {}
   msg["Movement_Sensor"] = movement_value
-  msg['Movement_Sensor ON/OFF'] = movement_sensor
+  msg["Movement_Sensor ON/OFF"] = movement_sensor
+  msg["Temperatura interna da ESP em C°"] = tempC
   msg["temperature"] = temp
   return json.dumps(msg)
 
