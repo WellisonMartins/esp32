@@ -59,13 +59,9 @@ def pub_sub():
         print("Sub function error: ", e)
         mqtt_client.disconnect()
 
-#while True:
-#    sub()
-#    utime.sleep(5)
-_thread.start_new_thread(pub_sub, ())
-_thread.start_new_thread(res, ())
-#_thread.start_new_thread(sub, ())
-#web_register_uix()
+while True:
+    pub_sub()
+    
 
 
 
