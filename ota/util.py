@@ -6,7 +6,6 @@ from machine import ADC, Pin, I2C
 import machine
 import random
 from time import sleep
-import time
 import utime
 import esp32
 
@@ -80,13 +79,11 @@ def sensor_get_values():
   if movement_sensor.value() == 0: 
     movement_value = "No Motion."
     led.value(0)
-    time.sleep(0.5)
-    sleep(0.5)
+    time.sleep(1)
   else:
     movement_value = "Motion captured."
     led.value(1)
-    time.sleep(0.5)
-    sleep(0.5)
+    time.sleep(1)
 
   temp = esp32.raw_temperature()
   tempC = (temp - 32) / 1.8
