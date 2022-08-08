@@ -18,12 +18,12 @@ except:
 
 
 #Funcoes para integarir via mqtt com o iothub
-def create_mqtt_client(client_id, hostname, username, password, port=8883, keepalive=120, ssl=True):
+def create_mqtt_client(client_id, hostname, username, password, port=8883, keepalive=60, ssl=True):
     if not keepalive:
-        keepalive = 120
+        keepalive = 60
     if not ssl:
         ssl = True
-    c = MQTTClient(client_id=client_id, server=hostname, port=8883, user=username, password=password, keepalive=120, ssl=True)
+    c = MQTTClient(client_id=client_id, server=hostname, port=8883, user=username, password=password, keepalive=60, ssl=True)
     c.DEBUG = True
     return c
 
