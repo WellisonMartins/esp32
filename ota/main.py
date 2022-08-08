@@ -49,6 +49,7 @@ def pub_sub():
                 data = sensor_get_values()
                 topic = get_telemetry_topic(survey_data['device_id'])
                 mqtt_client.publish(topic=topic, msg=data)
+                print("Telemetria Enviada")
             except: 
                 print("erro - payload enviado")
                     
