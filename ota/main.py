@@ -1,6 +1,6 @@
 
 
-from util import create_mqtt_client, get_telemetry_topic, get_c2d_topic, open_json, sensor_get_values, get_telemetry_topic, movement_sensor
+from util import create_mqtt_client, get_telemetry_topic, get_c2d_topic, open_json, sensor_get_values, get_telemetry_topic
 import utime
 import _thread
 import json
@@ -44,16 +44,13 @@ def pub_sub():
             subscribe_topic = get_c2d_topic(survey_data['device_id'])
             mqtt_client.set_callback(callback_handler)
             mqtt_client.subscribe(topic=subscribe_topic)
-            if movement_sensor == 1: 
-                try:     
-                    data = sensor_get_values()
-                    topic = get_telemetry_topic(survey_data['device_id'])
-                    mqtt_client.publish(topic=topic, msg=data)
-                    print("Telemetria Enviada")
-                except: 
-                    print("erro - payload enviado")
-            else:
-                print("Teste")
+            try:          
+                data = sensor_get_values()
+                topic = get_telemetry_topic(survey_data['device_id'])
+                mqtt_client.publish(topic=topic, msg=data)
+                print("Telemetria Enviada")
+            except: 
+                print("erro - payload enviado")
                     
             mqtt_client.check_msg()
             utime.sleep(1)
