@@ -78,10 +78,7 @@ led = Pin(2, Pin.OUT)
 
 def sensor_get_values():
   if movement_sensor.value() == 0: 
-    movement_value = "No Motion"
-    led.value(0)
-    time.sleep(0.5)
-    sleep(0.5)
+    None
   else:
     movement_value = "Motion captured"
     led.value(1)
