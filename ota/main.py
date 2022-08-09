@@ -49,8 +49,7 @@ def pub_sub():
                 mqtt_client.publish(topic=topic, msg=data)
                 print("Telemetria Enviada")
             except: 
-                print("erro - payload enviado")
-                    
+                None      
             mqtt_client.check_msg()
             utime.sleep(1)
             mqtt_client.disconnect()
