@@ -1,13 +1,42 @@
+Skip to content
+Search or jump to…
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@WellisonMartins 
+WellisonMartins
+/
+esp32
+Public
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+Settings
+esp32/ota/main.py /
+
+Wellison Martins att 08-08 16:13
+Latest commit 0baa162 23 hours ago
+ History
+ 0 contributors
+72 lines (50 sloc)  1.79 KB
 
 
-from util import create_mqtt_client, get_telemetry_topic, get_c2d_topic, open_json, sensor_get_values, get_telemetry_topic, movement_sensor
+
+from util import create_mqtt_client, get_telemetry_topic, get_c2d_topic, open_json, sensor_get_values, get_telemetry_topic
 import utime
 import _thread
 import json
 import gc
 import time
+
 import machine
-from machine import ADC, Pin, I2C
 
 gc.collect()
 gc.enable()
@@ -39,37 +68,25 @@ def pub_sub():
     global datadataset_dec_rep_j
     try:
         while True:
-            movement = movement_sensor.value()
             print("Listening")
             mqtt_client.reconnect()
             subscribe_topic = get_c2d_topic(survey_data['device_id'])
             mqtt_client.set_callback(callback_handler)
             mqtt_client.subscribe(topic=subscribe_topic)
-            if movement == 1:
-                try:     
-                    data = sensor_get_values()
-                    topic = get_telemetry_topic(survey_data['device_id'])
-                    mqtt_client.publish(topic=topic, msg=data)
-                    print("Telemetria Enviada")
-                except: 
-                    print("erro - payload enviado")
-                    mqtt_client.check_msg()
-                    utime.sleep(1)
-                    mqtt_client.disconnect()
-            else:
-                None
+            try:          
+                data = sensor_get_values()
+                topic = get_telemetry_topic(survey_data['device_id'])
+                mqtt_client.publish(topic=topic, msg=data)
+                print("Telemetria Enviada")
+            except: 
+                print("erro - payload enviado")
+                    
+            mqtt_client.check_msg()
+            utime.sleep(1)
+            mqtt_client.disconnect()
     except Exception as e: 
         print("Sub function error: ", e)
         mqtt_client.disconnect()
 
 while True:
     pub_sub()
-
-
-
-
-
-
-
-
-
