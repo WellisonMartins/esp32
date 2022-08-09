@@ -83,6 +83,7 @@ def sensor_get_values():
     movement_value = "Motion captured"
     led.value(1)
     time.sleep(0.5)
+    led.value(0)
     sleep(0.5)
 
   temp = esp32.raw_temperature()
