@@ -40,12 +40,12 @@ def pub_sub():
     try:
         while True:
             movement = movement_sensor.value()
+            print("Listening")
+            mqtt_client.reconnect()
+            subscribe_topic = get_c2d_topic(survey_data['device_id'])
+            mqtt_client.set_callback(callback_handler)
+            mqtt_client.subscribe(topic=subscribe_topic)
             if movement == 1:
-                print("Listening")
-                mqtt_client.reconnect()
-                subscribe_topic = get_c2d_topic(survey_data['device_id'])
-                mqtt_client.set_callback(callback_handler)
-                mqtt_client.subscribe(topic=subscribe_topic)
                 try:     
                     data = sensor_get_values()
                     topic = get_telemetry_topic(survey_data['device_id'])
@@ -53,9 +53,9 @@ def pub_sub():
                     print("Telemetria Enviada")
                 except: 
                     print("erro - payload enviado")
-                mqtt_client.check_msg()
-                utime.sleep(1)
-                mqtt_client.disconnect()
+                    mqtt_client.check_msg()
+                    utime.sleep(1)
+                    mqtt_client.disconnect()
             else:
                 None
     except Exception as e: 
