@@ -1,33 +1,3 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@WellisonMartins 
-WellisonMartins
-/
-esp32
-Public
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-esp32/ota/main.py /
-
-Wellison Martins att 08-08 16:13
-Latest commit 0baa162 23 hours ago
- History
- 0 contributors
-72 lines (50 sloc)  1.79 KB
-
-
 
 from util import create_mqtt_client, get_telemetry_topic, get_c2d_topic, open_json, sensor_get_values, get_telemetry_topic
 import utime

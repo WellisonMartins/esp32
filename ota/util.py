@@ -1,32 +1,3 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@WellisonMartins 
-WellisonMartins
-/
-esp32
-Public
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-esp32/ota/util.py /
-
-Wellison Martins att 08-08 18:02
-Latest commit 2ccc13c 21 hours ago
- History
- 0 contributors
-112 lines (74 sloc)  2.25 KB
-
 
 from robust import MQTTClient
 import re #regex para coletar os valores do form
