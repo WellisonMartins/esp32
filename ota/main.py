@@ -51,6 +51,9 @@ def pub_sub():
             except: 
                 None      
             mqtt_client.check_msg()
+            dataset = message_received
+            dataset_dec = dataset.decode("utf-8")
+            print(dataset_dec)
             utime.sleep(1)
             mqtt_client.disconnect()
     except Exception as e: 
