@@ -1,4 +1,5 @@
 
+from asyncio.windows_events import NULL
 from util import create_mqtt_client, get_telemetry_topic, get_c2d_topic, open_json, sensor_get_values, get_telemetry_topic
 import utime
 import _thread
@@ -49,7 +50,8 @@ def pub_sub():
                 mqtt_client.publish(topic=topic, msg=data)
                 print("Telemetria Enviada")
             except: 
-                None      
+                None
+            dataset = None     
             mqtt_client.check_msg()
             dataset = message_received
             dataset_dec = dataset.decode("utf-8")
