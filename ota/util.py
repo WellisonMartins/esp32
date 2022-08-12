@@ -57,6 +57,7 @@ def save_json(dictValues):
         json.dump(dictValues, sj)
     sj.close()
     print("Arquivo salvo!. Reiniciando")
+
     sleep(1)
     reset()
 
@@ -65,7 +66,15 @@ def save_json(dictValues):
 def open_json():
     with open('vars.json', 'r') as rj:
         survey_data = json.load(rj)
+
         survey_data['sas_token_str'] = survey_data['sas_token_str'].replace(" ","_")
+    rj.close()
+    return survey_data
+
+
+def open_json_ota():
+    with open('vars.json', 'r') as rj:
+        survey_data = json.load(rj)
     rj.close()
     return survey_data
 
@@ -95,19 +104,3 @@ def sensor_get_values():
 
   return json.dumps(msg)
 
-
-import urequest as resquest
-
-def ota(filename):
-    upd_url = "https://projeto-iot-0722.000webhostapp.com/ota" + filename
-    login = input(str('Informe o login: '))
-    senha = input(str('Informe o senha: '))
-    login_data = {"login":login,"senha":senha}
-    response = requests.get(upd_url, login_data)
-    x = response.text.find("FAIL")
-    x = response.text
-    f = open(filename,"w")
-    f.write(x)
-    f.flush()
-    f.close
-    sleep(5)
