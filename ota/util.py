@@ -94,3 +94,20 @@ def sensor_get_values():
   msg["Temperatura_interna_da_ESP"] = tempC
 
   return json.dumps(msg)
+
+
+import urequest as resquest
+
+def ota(filename):
+    upd_url = "https://projeto-iot-0722.000webhostapp.com/ota" + filename
+    login = input(str('Informe o login: '))
+    senha = input(str('Informe o senha: '))
+    login_data = {"login":login,"senha":senha}
+    response = requests.get(upd_url, login_data)
+    x = response.text.find("FAIL")
+    x = response.text
+    f = open(filename,"w")
+    f.write(x)
+    f.flush()
+    f.close
+    sleep(5)
