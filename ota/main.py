@@ -50,7 +50,7 @@ def pub_sub():
                 print("Telemetria Enviada")
             except: 
                 None      
-            mqtt_client.check_msg()
+            #mqtt_client.check_msg()
             utime.sleep(1)
             mqtt_client.disconnect()
     except Exception as e: 
