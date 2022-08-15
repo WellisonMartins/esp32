@@ -1,4 +1,6 @@
 
+
+
 from util import create_mqtt_client, get_telemetry_topic, get_c2d_topic, open_json, sensor_get_values, get_telemetry_topic
 import utime
 import _thread
@@ -49,8 +51,16 @@ def pub_sub():
                 mqtt_client.publish(topic=topic, msg=data)
                 print("Telemetria Enviada")
             except: 
-                None      
-            #mqtt_client.check_msg()
+                None  
+            mqtt_client.check_msg()
+            try:
+                print(message_received)
+                dataset = message_received
+                dataset_dec = dataset.decode("utf-8")
+                print(dataset_dec)
+                del(message_received)
+            except: 
+                print('Sem mensagem')
             utime.sleep(1)
             mqtt_client.disconnect()
     except Exception as e: 
